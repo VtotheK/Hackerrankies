@@ -21,7 +21,7 @@ int pickingNumbers(vector<int> a) {
     }
     for(int j = 0; j < 99; ++j){
         if(freq[j] + freq[j+1] > maxlen){
-            maxlen = freq[j] + freq[j+2] ;
+            maxlen = freq[j] + freq[j+1] ;
         }
     }
     return maxlen;
