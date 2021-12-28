@@ -1,4 +1,4 @@
-#Encryption
+# Encryption
 
 Hackerrank medium, was fun 
 
