@@ -32,22 +32,29 @@ vector<int> climbingLeaderboard(vector<int> ranked, vector<int> player) {
             ++current;
         }
     }
-    int size =  sizeof(distinctboard) / sizeof(distinctboard[0]) ;
-    for(int k = 0; k < player.size(); ++k){
-        int rank = 1; 
-        for(int m = 0; m < size; ++m){
-            if(player[k] == distinctboard[m] || player[k] > distinctboard[m]){
-                ranks.push_back(rank);
-                break;
-            }
-            else if(m == size - 1 ){
-                ranks.push_back(rank + 1);
-                break;
-            }
-            ++rank; 
+    int i = 0;
+    int j = player.size() - 1;
+    
+    while(i < player.size()) {
+        if(j < 0)
+        {
+            ranks.push_back(1);
+            i++;
+            continue;
         }
-        
+        if(player[i] < distinctboard[j]){
+            ranks.push_back(j+2);
+            i++;
+        }
+        else if(player[i] > distinctboard[j]){
+            j--;
+        }
+        else{
+            ranks.push_back(j+1);
+            i++;
+        }
     }
+    
     return ranks;
 }
 
