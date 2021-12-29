@@ -33,46 +33,21 @@ vector<int> climbingLeaderboard(vector<int> ranked, vector<int> player) {
         }
     }
     int size =  sizeof(distinctboard) / sizeof(distinctboard[0]) ;
-    //if(player[0] >= distinctboard[0]){
-    //    ranks.push_back(1);
-    //}
-    for(auto d : distinctboard){
-        ranks.push_back(d);
-    }
-   /* 
     for(int k = 0; k < player.size(); ++k){
-        for(int m = 0; m < size - 2; ++m){
-            if(player[k] == distinctboard[m]){
-               ranks.push_back(m + 1);
-               break;
+        int rank = 1; 
+        for(int m = 0; m < size; ++m){
+            if(player[k] == distinctboard[m] || player[k] > distinctboard[m]){
+                ranks.push_back(rank);
+                break;
             }
-            else if (player[k] < distinctboard[m - 1] && player[k] > distinctboard[m +1]){
-               ranks.push_back(m + 1);
-               break;
+            else if(m == size - 1 ){
+                ranks.push_back(rank + 1);
+                break;
             }
-        } 
-    } */
-    /*
-    for(int k = 0; k < player.size(); ++k){
-        int low,mid,high;
-        low = 0;
-        high = sizeof(distinctboard) / sizeof(distinctboard[0]);
-        while(low <= high){
-            mid = low + (high - 1) / 2;
-            if(distinctboard[mid] == player[k] || (distinctboard[mid - 1] > player[k] && distinctboard[mid + 1] < player[k]))
-            {
-               ranks.push_back(mid);
-               break;
-            }
-            
-            else if(distinctboard[mid] < player[k]){
-               low = mid + 1; 
-            }
-            else{
-                high = mid - 1;
-            }
+            ++rank; 
         }
-    }*/
+        
+    }
     return ranks;
 }
 
