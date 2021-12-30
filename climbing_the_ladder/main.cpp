@@ -28,12 +28,12 @@ vector<int> climbingLeaderboard(vector<int> ranked, vector<int> player) {
     distinctboard[0] = ranked[0];
     for(int j = 0; j < ranked.size() - 1; ++j){
         if(ranked[j] != ranked[j + 1]){
-            distinctboard[current] = ranked[j + 1];
-            ++current;
+           distinctboard[current++] = ranked[j + 1];
         }
     }
+    
     int i = 0;
-    int j = player.size() - 1;
+    int j = ranksize - 1;
     
     while(i < player.size()) {
         if(j < 0)
@@ -54,7 +54,6 @@ vector<int> climbingLeaderboard(vector<int> ranked, vector<int> player) {
             i++;
         }
     }
-    
     return ranks;
 }
 
