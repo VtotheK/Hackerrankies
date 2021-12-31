@@ -19,21 +19,14 @@ vector<string> split(const string &);
 vector<int> circularArrayRotation(vector<int> a, int k, vector<int> queries) {
     int arr[a.size()];
     vector<int> ret;
+    int index = k % a.size();
     for(int i = 0; i < a.size(); ++i){
-        if(i + k < a.size()){
-            arr[i+k] = a[i];
-        }
-        else {
-            arr[a.size()-i-k+1] = a[i];
-        }
-    }
-    for(auto d : arr){
-        ret.push_back(d);
+        arr[(i+k)%a.size()] = a[i];
     }
     
-    //for(int j = 0; j < queries.size(); ++j){
-    //    ret.push_back(arr[j]);
-    //}
+    for(int j = 0; j < queries.size(); ++j){
+        ret.push_back(arr[queries[j]]);
+    }
     return ret;     
 }
 
